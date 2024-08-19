@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_Birth__c</fullName>
+    <formula>DATE(
+    IF(
+        VALUE(LEFT(ID_Number__c, 2)) &gt;= (YEAR(TODAY()) - 2000),
+        1900 + VALUE(LEFT(ID_Number__c, 2)),
+        2000 + VALUE(LEFT(ID_Number__c, 2))
+    ),
+    VALUE(MID(ID_Number__c, 3, 2)),
+    VALUE(MID(ID_Number__c, 5, 2))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Date of Birth</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
