@@ -10,12 +10,13 @@ export default class Search_by_ID_Number extends LightningElement {
     handleInputChange(event) {
         this.idNumber = event.target.value;
 
-        if((this.idNumber.length === 13) && (/^\d+$/.test(idNumber))){
+        if((this.idNumber.length === 13) && (/^\d+$/.test(this.idNumber))){
             this.showValidationText = false;
-            this.isSearchDisabled = idValidationLuhn(idNumber);
+            this.isSearchDisabled = !leftToRightLuhnChecksum(this.idNumber);
         } 
         else {
             this.showValidationText = true;
+            this.isSearchDisabled = true;
         }
     }
 
@@ -23,26 +24,21 @@ export default class Search_by_ID_Number extends LightningElement {
         this.showSpinner = true;
 
     }
+}
 
-    idValidationLuhn(idNumber) {
-        let sum = 0;
+function leftToRightLuhnChecksum(idNumber) {
+    let sum = 0;
 
-        for (let i = 0; i < idNumber.length; i++) {
-            let currentNumber = parseInt(idNumber[i]);
+    for (let i = 0; i < idNumber.length; i++) {
+        let currentNumber = parseInt(idNumber[i]);
 
-            if (i % 2 === 0) {
-                currentNumber *= 2;
-                if (currentNumber > 9) {
-                    currentNumber -= 9;
-                }
+        if ((i + 1) % 2 === 0) {
+            currentNumber *= 2;
+            if (currentNumber > 9) {
+                currentNumber -= 9;
             }
-            sum += currentNumber;
         }
-        return sum % 10 === 0;
+        sum += currentNumber;
     }
-
-
-
-
-
+    return sum % 10 === 0;
 }
