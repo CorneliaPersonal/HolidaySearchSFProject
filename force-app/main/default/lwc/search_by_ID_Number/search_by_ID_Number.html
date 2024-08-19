@@ -1,11 +1,19 @@
 <template>
-    <div class="slds-form-element">
-        <label class="slds-form-element__label" for="idNumberInput">Please input an ID number</label>
-        <div class="slds-form-element__control">
-            <input type="text" id="idNumberInput" class="slds-input" placeholder="Enter ID number" />
+    <lightning-card title="ID Search">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Please input an ID number"
+                             value={idNumber}
+                             onchange={handleInputChange}
+                             maxlength="13"
+                             minlength="13"
+                             required>
+            </lightning-input>
+            <lightning-button label="Search"
+                              onclick={handleSearch}
+                              disabled={isSearchDisabled}
+                              class="slds-m-left_small">
+            </lightning-button>
         </div>
-    </div>
-    <div class="slds-m-top_small">
-        <lightning-button label="Search" onclick={handleSearch}></lightning-button>
-    </div>
+    </lightning-card>
 </template>
+
