@@ -38,7 +38,6 @@ export default class Search_by_ID_Number extends LightningElement {
             } else {
                 console.log(`handleSearch result: ${result}`);
             }
-
         })
         .catch(error => {
             console.log(JSON.stringify(error));
