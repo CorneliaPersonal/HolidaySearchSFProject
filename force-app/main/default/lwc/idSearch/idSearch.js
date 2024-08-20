@@ -1,4 +1,6 @@
 import { LightningElement, track } from 'lwc';
+import { leftToRightLuhnChecksum } from 'c/luhnChecksum';
+import getHolidaysForID from '@salesforce/apex/IDSearchController.getHolidaysForID';
 
 export default class Search_by_ID_Number extends LightningElement {
 
@@ -22,23 +24,9 @@ export default class Search_by_ID_Number extends LightningElement {
 
     handleSearch() {
         this.showSpinner = true;
+        getHolidaysForID(this.idNumber)
+        .then(result => {
 
+        })
     }
-}
-
-function leftToRightLuhnChecksum(idNumber) {
-    let sum = 0;
-
-    for (let i = 0; i < idNumber.length; i++) {
-        let currentNumber = parseInt(idNumber[i]);
-
-        if ((i + 1) % 2 === 0) {
-            currentNumber *= 2;
-            if (currentNumber > 9) {
-                currentNumber -= 9;
-            }
-        }
-        sum += currentNumber;
-    }
-    return sum % 10 === 0;
 }
