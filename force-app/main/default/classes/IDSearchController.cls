@@ -2,64 +2,84 @@
 *********************************************************
 Apex Class Name    : IDSearchController
 Created Date       : August 20, 2024
-@description       : This class is used to search for and create 
-					 ID Number records in Salesforce and retrieve 
-					 holidays from an external service
+@description       : This class is used to search for, create 
+					 and update ID Number records in Salesforce
 @author            : Cornelia Smit
 Modification Log:
-Ver   Date         Author                        Modification
-1.0   20-08-2024   Cornelia Smit                Initial Version
+Ver   Date         Author                Modification
+1.0   20-08-2024   Cornelia Smit        Initial Version
 *********************************************************
 */
 public with sharing class IDSearchController {
     @AuraEnabled
-    public static String getHolidaysForID(String idNumber) {
-        List<Identity_Information__c> idList = retrieveIdentityInformation(idNumber);
-        String result = (idList.size() == 0) ? createIdentityInformation(idNumber) : incrementSearchCount(idList[0]);
-
-        if(result != 'Success'){
-            return result;
+    public static String processIDAndExtractYear(String idNumber) {
+        try {
+            List<Identity_Information__c> idList = retrieveIdentityInformation(idNumber);
+            if (idList.size() == 0) {
+                createIdentityInformation(idNumber);
+            }
+            else {
+                incrementSearchCount(idList[0]);
+            }
+            String year = extractYearFromID(idNumber);
+            System.debug('Year: ' + year);
+            return year;       
+        } catch (CustomException ce)  {
+            throw new AuraHandledException(ce.getMessage());
+        } catch (Exception e) {
+            throw new AuraHandledException('Unexpected error occurred: ' + e.getMessage());
         }
-        String holidays = 'Holidays';
-
-        return holidays;
     }
     
     private static List<Identity_Information__c> retrieveIdentityInformation(String idNumber) {
-        List<Identity_Information__c> idList = [SELECT Id, ID_Number__c, Search_Count__c, Date_of_Birth__c 
-                                                FROM Identity_Information__c 
-                                                WHERE ID_Number__c = :idNumber 
-                                                WITH SECURITY_ENFORCED 
-                                                LIMIT 1];
-       return idList; 
+        if (!Schema.sObjectType.Identity_Information__c.isAccessible()){
+            throw new CustomException('Identity Information object is not readable'); 
+        }
+        List<Identity_Information__c> idList = [SELECT Id, ID_Number__c, Search_Count__c 
+                                                    FROM Identity_Information__c 
+                                                    WHERE ID_Number__c = :idNumber 
+                                                    WITH SECURITY_ENFORCED 
+                                                    LIMIT 1];
+        return idList; 
     }
     
-    private static String createIdentityInformation(String idNumber) {
-        if(!Schema.sObjectType.Identity_Information__c.isCreateable()){
-            return 'Error: Identity Information object is not createable';
+    private static void createIdentityInformation(String idNumber) {
+        if (!Schema.sObjectType.Identity_Information__c.isCreateable()){
+            throw new CustomException('Insufficient permissions to create Identity Information record');
         }
         Identity_Information__c newID = new Identity_Information__c();
         newID.ID_Number__c = idNumber;
         try {
             insert newID;
-            return 'Success';
-        } catch(DmlException e) {
-            return 'Error: ' + e;
+        } catch (DmlException e) {
+            throw new CustomException('Failed to create Identity Information record: ' + e.getMessage());
         }
     }
     
-    private static String incrementSearchCount(Identity_Information__c idInfo) {
-        if(!Schema.sObjectType.Identity_Information__c.isUpdateable() ||
+    private static void incrementSearchCount(Identity_Information__c idInfo) {
+        if (!Schema.sObjectType.Identity_Information__c.isUpdateable() ||
            !Schema.sObjectType.Identity_Information__c.fields.Search_Count__c.isUpdateable()) {
-            return 'Error: Identity Information record is not updateable';
+            throw new CustomException('Insufficient permissions to update the Search Count on Identity Information');
         }
-        
         idInfo.Search_Count__c = idInfo.Search_Count__c + 1;
         try {
             update idInfo;
-            return 'Success';
-        } catch(DmlException e) {
-            return 'Error: ' + e;
+        } catch (DmlException e) {
+            throw new CustomException('Failed to increment Identity Information record search count: ' + e.getMessage());
         }
     }
+
+    private static String extractYearFromID (String idNumber) {
+        String yearSubstring = idNumber.substring(0, 2);
+        Integer year = Integer.valueOf(yearSubstring);
+
+        if (year + 2000 <= year) {
+            return '20' + yearSubstring;
+        }
+        else {
+            return '19' + yearSubstring;
+        }
+    }
+
+    public class CustomException extends Exception {}
 }

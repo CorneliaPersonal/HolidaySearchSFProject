@@ -1,6 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import { leftToRightLuhnChecksum } from 'c/luhnChecksum';
-import getHolidaysForID from '@salesforce/apex/IDSearchController.getHolidaysForID';
+import processIDAndExtractYear from '@salesforce/apex/IDSearchController.processIDAndExtractYear';
+//import executeCallout from '@salesforce/apex/IDSearchApiService.executeCallout';
 
 export default class Search_by_ID_Number extends LightningElement {
 
@@ -29,15 +30,11 @@ export default class Search_by_ID_Number extends LightningElement {
     handleSearch() {
         this.showSpinner = true;
 
-        getHolidaysForID({ idNumber: this.idNumber })
+        processIDAndExtractYear({ idNumber: this.idNumber })
         .then(result => {
             this.showSpinner = false;
-
-            if(result.includes('Error')) {
-                console.log(`handleSearch error: ${result}`);
-            } else {
-                console.log(`handleSearch result: ${result}`);
-            }
+            let year = result;
+            console.log(`Year: ${year}`);
         })
         .catch(error => {
             console.log(JSON.stringify(error));
