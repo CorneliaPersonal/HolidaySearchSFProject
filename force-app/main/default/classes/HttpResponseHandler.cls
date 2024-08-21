@@ -20,13 +20,14 @@ public with sharing class HttpResponseHandler {
     };
 
     public static String handleResponse(HttpResponse response) {
-        Integer statusCode = Integer.valueOf(response.getStatus());
+        System.debug(response.getStatusCode());
+        Integer statusCode = Integer.valueOf(response.getStatusCode());
         String responseBody = response.getBody();
 
         if (RESPONSE_CODE_MAP.containsKey(statusCode)) {
             if (statusCode != 200) {
                 throw new CustomException(
-                    'Invalid response: Status ' + String.valueOf(statusCode) + ' - ' + RESPONSE_CODE_MAP.get(statusCode) + '. Response body: ' + responseBody
+                    'Invalid response: Status ' + String.valueOf(statusCode) + ' - ' + RESPONSE_CODE_MAP.get(statusCode)
                 );
             }
             else {

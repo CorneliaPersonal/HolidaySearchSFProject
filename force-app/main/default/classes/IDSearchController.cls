@@ -22,7 +22,6 @@ public with sharing class IDSearchController {
                 incrementSearchCount(idList[0]);
             }
             String year = extractYearFromID(idNumber);
-            System.debug('Year: ' + year);
             return year;       
         } catch (CustomException ce)  {
             throw new AuraHandledException(ce.getMessage());
@@ -73,12 +72,7 @@ public with sharing class IDSearchController {
         String yearSubstring = idNumber.substring(0, 2);
         Integer year = Integer.valueOf(yearSubstring);
 
-        if (year + 2000 <= year) {
-            return '20' + yearSubstring;
-        }
-        else {
-            return '19' + yearSubstring;
-        }
+        return ((year + 2000 <= Date.today().year()) ? '20' : '19') + yearSubstring;
     }
 
     public class CustomException extends Exception {}
