@@ -4,7 +4,7 @@ import processIDAndExtractYear from "@salesforce/apex/IDSearchController.process
 import executeCallout from "@salesforce/apex/IDSearchApiService.executeCallout";
 import BEACH_IMAGE from "@salesforce/resourceUrl/Beach_png";
 
-export default class Search_by_ID_Number extends LightningElement {
+export default class IdSearch extends LightningElement {
   columns = [
     { label: "Name", fieldName: "name" },
     { label: "Date", fieldName: "date" }
