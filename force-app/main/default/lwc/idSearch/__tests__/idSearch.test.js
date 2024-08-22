@@ -80,7 +80,7 @@ describe("c-id-search", () => {
     document.body.appendChild(element);
 
     const input = element.shadowRoot.querySelector("lightning-input");
-    input.value = "1234567890123";
+    input.value = "9505240053081";
     input.dispatchEvent(
       new CustomEvent("change", { detail: { value: input.value } })
     );
@@ -102,7 +102,7 @@ describe("c-id-search", () => {
     document.body.appendChild(element);
 
     const input = element.shadowRoot.querySelector("lightning-input");
-    input.value = "1234567890123";
+    input.value = "9505240053081";
     input.dispatchEvent(
       new CustomEvent("change", { detail: { value: input.value } })
     );
@@ -123,7 +123,7 @@ describe("c-id-search", () => {
     document.body.appendChild(element);
 
     const input = element.shadowRoot.querySelector("lightning-input");
-    input.value = "1234567890123";
+    input.value = "9505240053081";
     input.dispatchEvent(
       new CustomEvent("change", { detail: { value: input.value } })
     );
