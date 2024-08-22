@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>HttpCalloutHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HttpResponseHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>IDSearchApiService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <classAccesses>
         <apexClass>IDSearchController</apexClass>
         <enabled>true</enabled>
@@ -8,10 +20,12 @@
         <enabled>true</enabled>
         <name>API_Key_Settings__mdt</name>
     </customMetadataTypeAccesses>
-    <description>Allows the user to retrieve holidays from an ID number input via the ID Search component</description>
+    <description
+  >Allows the user to retrieve holidays from an ID number input via the ID Search component</description>
     <externalCredentialPrincipalAccesses>
         <enabled>true</enabled>
-        <externalCredentialPrincipal>CalendarificAuth-CalendarificPrincipal</externalCredentialPrincipal>
+        <externalCredentialPrincipal
+    >CalendarificAuth-CalendarificPrincipal</externalCredentialPrincipal>
     </externalCredentialPrincipalAccesses>
     <fieldPermissions>
         <editable>false</editable>
