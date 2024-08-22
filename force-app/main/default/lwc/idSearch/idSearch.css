@@ -10,7 +10,7 @@
 }
 
 .input-custom-width {
-  max-width: 22rem; /* Ensure the input takes up no more than 22rem */
+  max-width: 22rem;
 }
 
 .custom-card-background {
@@ -18,24 +18,24 @@
 }
 
 .card-title h1 {
-  font-size: 2rem; /* Adjust size as needed */
-  color: #0070d2; /* Bright blue color */
+  font-size: 2rem;
+  color: #0070d2;
   text-align: center;
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
 
 .card-content {
   background-color: rgb(210, 241, 255);
   padding: 1rem;
   border-radius: 0.25rem;
-  min-height: 500px; /* Adjust as needed to ensure the card content area is tall enough */
+  min-height: 500px;
 }
 
 .table-container {
-  width: 80%; /* Ensure the table takes up 80% of the column width */
-  margin: 0; /* Align table left */
-  padding-right: 1rem; /* Add padding to the right of the table */
-  margin-top: 1rem; /* Add space between the button and table */
+  width: 80%;
+  margin: 0;
+  padding-right: 1rem;
+  margin-top: 1rem;
 }
 
 .table-container table {
@@ -52,7 +52,7 @@
 .custom-table-cell {
   text-align: left;
   padding: 0.5rem;
-  width: 50%; /* Ensure columns are of equal width */
+  width: 50%;
 }
 
 .custom-table th,
@@ -65,32 +65,32 @@
 }
 
 .beach-image-class {
-  width: 95%; /* Ensure the image column is only 20% of the screen width */
+  width: 95%;
   height: auto;
-  padding: 1rem; /* Padding around the image */
-  border: none; /* Remove border from image */
+  padding: 1rem;
+  border: none;
 }
 
 .input-help-container {
   display: flex;
-  align-items: center; /* Align the help icon next to the input label */
-  margin-bottom: 0.5rem; /* Space between input and validation message */
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .input-button-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the start of the container */
+  align-items: flex-start;
 }
 
 .slds-m-bottom_small {
-  margin-bottom: 0.5rem; /* Space between input and button */
+  margin-bottom: 0.5rem;
 }
 
 .slds-m-top_small {
-  margin-top: 1rem; /* Space between button and table */
+  margin-top: 1rem;
 }
 
 .slds-m-top_x-small {
-  margin-top: 0.5rem; /* Space between input and validation message */
+  margin-top: 0.5rem;
 }

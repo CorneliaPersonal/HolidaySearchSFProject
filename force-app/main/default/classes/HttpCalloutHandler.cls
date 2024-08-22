@@ -11,22 +11,21 @@ Ver   Date         Author                 Modification
 *********************************************************
 */
 public with sharing class HttpCalloutHandler {
-    public static HttpResponse makeCallout(String endpoint, String method) {
-        Http http = new Http();
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint(endpoint);
-        request.setMethod(method);
+  public static HttpResponse makeCallout(String endpoint, String method) {
+    Http http = new Http();
+    HttpRequest request = new HttpRequest();
+    request.setEndpoint(endpoint);
+    request.setMethod(method);
 
-        HttpResponse response;
-        System.debug('Endpoint: ' + endpoint);
-        System.debug('Method: ' + method);
+    HttpResponse response;
 
-        try {
-            response = http.send(request);
-        } catch (Exception e) {
-            throw new CalloutException('Callout failed: ' + e.getMessage());
-        }
-        return response;
+    try {
+      response = http.send(request);
+    } catch (Exception e) {
+      throw new CalloutException('Callout failed: ' + e.getMessage());
     }
-    public class CalloutException extends Exception {}
+    return response;
+  }
+  public class CalloutException extends Exception {
+  }
 }
