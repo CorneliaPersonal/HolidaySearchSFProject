@@ -1,0 +1,96 @@
+.custom-text-red {
+  color: #e01a2e;
+}
+
+.no-holidays-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4a4a4a;
+  padding: 1rem;
+}
+
+.input-custom-width {
+  max-width: 22rem;
+}
+
+.custom-card-background {
+  background-color: #ffffff;
+}
+
+.card-title h1 {
+  font-size: 2rem;
+  color: #0070d2;
+  text-align: center;
+  margin: 0;
+}
+
+.card-content {
+  background-color: rgb(210, 241, 255);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  min-height: 500px;
+}
+
+.table-container {
+  width: 80%;
+  margin: 0;
+  padding-right: 1rem;
+  margin-top: 1rem;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-container th,
+.table-container td {
+  text-align: left;
+}
+
+.custom-table-header,
+.custom-table-cell {
+  text-align: left;
+  padding: 0.5rem;
+  width: 50%;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #0091ff;
+}
+
+.custom-table th {
+  background-color: rgb(167, 222, 254);
+}
+
+.beach-image-class {
+  width: 95%;
+  height: auto;
+  padding: 1rem;
+  border: none;
+}
+
+.input-help-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.input-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.slds-m-bottom_small {
+  margin-bottom: 0.5rem;
+}
+
+.slds-m-top_small {
+  margin-top: 1rem;
+}
+
+.slds-m-top_x-small {
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,87 @@
+<template>
+  <div class="slds-var-m-top_medium">
+    <lightning-card class="custom-card-background">
+      <div class="card-title">
+        <h1>Holiday Search</h1>
+      </div>
+      <template if:true={showSpinner}>
+        <lightning-spinner
+          alternative-text="Loading"
+          size="medium"
+        ></lightning-spinner>
+      </template>
+      <div class="slds-var-m-around_medium">
+        <div class="slds-grid slds-gutters">
+          <!-- Image Column -->
+          <div class="slds-col slds-size_1-of-5">
+            <img src={imageUrl} alt="Beach Image" class="beach-image-class" />
+          </div>
+          <!-- Input and Button Column -->
+          <div class="slds-col slds-size_4-of-5">
+            <div class="input-button-container">
+              <div class="input-help-container">
+                <lightning-input
+                  label="ID number:"
+                  class="input-custom-width"
+                  value={idNumber}
+                  onchange={handleInputChange}
+                  maxlength="13"
+                  minlength="13"
+                  required
+                >
+                </lightning-input>
+                <lightning-helptext
+                  content="Enter a valid 13-digit South African ID number. Then click 'Search' to retrieve a list of holidays that match with the year in the ID number."
+                  class="slds-var-m-left_small"
+                ></lightning-helptext>
+              </div>
+              <template if:true={showValidationText}>
+                <div class="slds-var-m-top_x-small">
+                  <p class="custom-text-red">{validationMessage}</p>
+                </div>
+              </template>
+              <div class="slds-var-m-top_small">
+                <lightning-button
+                  label="Search"
+                  onclick={handleSearch}
+                  disabled={isSearchDisabled}
+                  class="slds-var-m-bottom_small"
+                >
+                </lightning-button>
+              </div>
+            </div>
+            <template if:true={noHolidays}>
+              <template if:false={isSearchDisabled}>
+                <div class="no-holidays-message slds-var-m-top_medium">
+                  <p>{noHolidaysMessage}</p>
+                </div>
+              </template>
+            </template>
+            <template if:true={data.length}>
+              <div class="table-container slds-var-m-top_medium">
+                <table
+                  class="slds-table custom-table slds-table_bordered slds-table_cell-buffer"
+                >
+                  <thead>
+                    <tr class="slds-line-height_reset">
+                      <th scope="col" class="custom-table-header">Name</th>
+                      <th scope="col" class="custom-table-header">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template for:each={data} for:item="holiday">
+                      <tr key={holiday.name}>
+                        <td class="custom-table-cell">{holiday.name}</td>
+                        <td class="custom-table-cell">{holiday.date}</td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </lightning-card>
+  </div>
+</template>
