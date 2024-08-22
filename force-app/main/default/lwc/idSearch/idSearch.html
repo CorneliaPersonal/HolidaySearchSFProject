@@ -32,20 +32,20 @@
                 </lightning-input>
                 <lightning-helptext
                   content="Enter a valid 13-digit South African ID number. Then click 'Search' to retrieve a list of holidays that match with the year in the ID number."
-                  class="slds-m-left_small"
+                  class="slds-var-m-left_small"
                 ></lightning-helptext>
               </div>
               <template if:true={showValidationText}>
-                <div class="slds-m-top_x-small">
+                <div class="slds-var-m-top_x-small">
                   <p class="custom-text-red">{validationMessage}</p>
                 </div>
               </template>
-              <div class="slds-m-top_small">
+              <div class="slds-var-m-top_small">
                 <lightning-button
                   label="Search"
                   onclick={handleSearch}
                   disabled={isSearchDisabled}
-                  class="slds-m-bottom_small"
+                  class="slds-var-m-bottom_small"
                 >
                 </lightning-button>
               </div>
