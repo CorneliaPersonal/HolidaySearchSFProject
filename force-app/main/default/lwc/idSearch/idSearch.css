@@ -65,7 +65,7 @@
 }
 
 .beach-image-class {
-  width: 80%; /* Ensure the image column is only 20% of the screen width */
+  width: 95%; /* Ensure the image column is only 20% of the screen width */
   height: auto;
   padding: 1rem; /* Padding around the image */
   border: none; /* Remove border from image */
