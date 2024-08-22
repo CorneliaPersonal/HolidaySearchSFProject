@@ -1,3 +1,14 @@
+/**
+ * @description       : Uses an ID number from user input to retrieve a list of public- and bank
+ *                      holidays for the year of the birth date on the ID number
+ * @author            : Cornelia Smit
+ * @group             :
+ * @last modified on  : 19-08-2024
+ * @last modified by  : Cornelia Smit
+ * Modifications Log
+ * Ver   Date         Author                    Modification
+ * 1.0   19-08-2024   Cornelia Smit             Initial Version
+ **/
 import { LightningElement } from "lwc";
 import { leftToRightLuhnChecksum } from "c/luhnChecksum";
 import processIDAndExtractYear from "@salesforce/apex/IDSearchController.processIDAndExtractYear";

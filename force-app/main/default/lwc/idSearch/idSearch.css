@@ -1,3 +1,13 @@
+/**
+ * @description       : Custom styling for the idSearch LWC
+ * @author            : Cornelia Smit
+ * @group             : 
+ * @last modified on  : 19-08-2024
+ * @last modified by  : Cornelia Smit
+ * Modifications Log 
+ * Ver   Date         Author             Modification
+ * 1.0   19-08-2024   Cornelia Smit      Initial Version
+**/
 .custom-text-red {
   color: #e01a2e;
 }

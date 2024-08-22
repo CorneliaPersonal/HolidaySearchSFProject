@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment
+    >Action override created by Lightning App Builder during activation.</comment>
         <content>Identity_Information</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -11,7 +12,8 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment
+    >Action override created by Lightning App Builder during activation.</comment>
         <content>Identity_Information</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -64,6 +66,7 @@
         <profile>Standard</profile>
     </profileActionOverrides>
     <tabs>Identity_Information__c</tabs>
+    <tabs>ID_Search_Salesforce</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Identity_Search_UtilityBar</utilityBar>
 </CustomApplication>
