@@ -1,5 +1,13 @@
-//utility class to store reusable Luhn functions
-
+/**
+ * @description       : Utility class to store Luhn checksum functions
+ * @author            : Cornelia Smit
+ * @group             :
+ * @last modified on  : 19-08-2024
+ * @last modified by  : Cornelia Smit
+ * Modifications Log
+ * Ver   Date         Author                    Modification
+ * 1.0   19-08-2024   Cornelia Smit             Initial Version
+ **/
 function leftToRightLuhnChecksum(inputNumber) {
   let sum = 0;
 
