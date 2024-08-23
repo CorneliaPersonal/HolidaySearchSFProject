@@ -19,6 +19,12 @@ describe("c-id-search", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+  afterEach(() => {
+    // Reset the DOM
+    while (document.body.firstChild) {
+      document.body.removeChild(document.body.firstChild);
+    }
+  });
 
   it("should initialize with default values", async () => {
     const element = createElement("c-id-search", { is: IdSearch });
