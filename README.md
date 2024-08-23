@@ -1,3 +1,15 @@
+# Holiday Search Salesforce Project
+
+## Overview
+
+This project is designed to allow the end user to retrieve a list of public- and bank holidays that correlate to the
+year in a 13 digit, South African ID number input. The holiday list is retrieved from a Calendarific endpoint.
+
+## User requirements
+
+The user is able to view the ID search component in Salesforce on the 'ID Search Salesforce' tab of the
+Identity Search App. Users require the 'ID Search' permission set to utilize the ID Search component.
+
 # Salesforce DX Project: Next Steps
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.

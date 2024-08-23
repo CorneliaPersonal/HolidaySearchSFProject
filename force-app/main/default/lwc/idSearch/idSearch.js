@@ -34,10 +34,11 @@ export default class IdSearch extends LightningElement {
 
   handleInputChange(event) {
     this.idNumber = event.target.value;
+    this.isSearchDisabled = true;
+    this.showValidationText = false;
 
     if (!/^\d+$/.test(this.idNumber)) {
       this.showValidationText = true;
-      this.isSearchDisabled = true;
     } else if (this.idNumber.length === 13) {
       this.isSearchDisabled = !leftToRightLuhnChecksum(this.idNumber);
       this.showValidationText = this.isSearchDisabled;
