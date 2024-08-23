@@ -8,7 +8,7 @@ year in a 13 digit, South African ID number input. The holiday list is retrieved
 ## User requirements
 
 The user is able to view the ID search component in Salesforce on the 'ID Search Salesforce' tab of the
-Identity Search App. Users require the 'ID Search' permission set to utilize the ID Search component.
+'Identity Search' App. Users require the 'ID Search' permission set to utilize the ID Search component.
 
 ## Salesforce DX Project: Next Steps
 
